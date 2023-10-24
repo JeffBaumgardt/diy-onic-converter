@@ -75,10 +75,9 @@ const diyOnicConverter = (textContentContainerSelector, options = {}) => {
       returnContent.appendChild(textNode);
     });
     element.after(returnContent);
-
-    container.classList.toggle("bonic-toggle-on");
   });
 
+  container.className = container.className += " bonic-toggle-on";
   addControlsOverlay(container);
 };
 
@@ -129,6 +128,7 @@ function addControlsOverlay(container) {
   // Create label for checkbox
   const toggleLabel = document.createElement("label");
   toggleLabel.htmlFor = "toggleDisplay";
+  toggleLabel.style = `margin-right: 8px`;
   toggleLabel.appendChild(document.createTextNode("Toggle Display:"));
 
   // Create select
@@ -155,6 +155,7 @@ function addControlsOverlay(container) {
   // Create label for select
   const formatLabel = document.createElement("label");
   formatLabel.htmlFor = "format";
+  formatLabel.style = `margin-right: 8px`;
   formatLabel.appendChild(document.createTextNode("Format:"));
 
   // Append elements to container
