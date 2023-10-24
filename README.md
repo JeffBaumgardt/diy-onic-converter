@@ -9,7 +9,7 @@ _or…_
 
 
 # Implementation
-The code found in `/public/diy-onic-converter.js` can be copied, in whole, to the clipboard. 
+The code found in `/public/diy-onic-converter.js` can be copied, in whole, to the clipboard, and used on any accessiable website.
 
 Then on any site open the dev tools, normally F12 on the keybroad, or Ctrl + Shift + i, and locate the 'console' tab. Paste the copied code.
 
@@ -17,3 +17,8 @@ The output should be exactly what you just entered. Because we added the method 
 
 Note `body` here is the CSS selector of which you are quering from. Body is going to be the most primitive as this is the entire website, that's visible. However, you can use a more complex selector to only execute the bionic converter on a more restricted paragraph. For example `diyOnicConverter('div#main')`.
 
+# Testing
+I've tested this code on
+* https://reactdenver.com
+* https://en.wikipedia.org/wiki/Jane_Air
+* https://github.com/friendbuy/diy-onic-converter/blob/main/INTERVIEW.md
