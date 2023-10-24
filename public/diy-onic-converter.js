@@ -149,5 +149,3 @@ function addControlsOverlay(container) {
   controlPanel.appendChild(formatLabel);
   controlPanel.appendChild(format);
 }
-
-window.addControlsOverlay = addControlsOverlay;
