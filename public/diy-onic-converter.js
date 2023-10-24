@@ -8,16 +8,14 @@ const diyOnicConverter = (textContentContainerSelector) => {
   const container = document.querySelector(textContentContainerSelector);
   console.log("Performing bionic reading conversion on:", container);
 
-  const selectedElements = Array.from(
-    selectorList.map((selector) =>
-      Array.from(container.querySelectorAll(selector))
-    )
-  ).flat();
+  const selectedElements = selectorList
+    .map((selector) => Array.from(container.querySelectorAll(selector)))
+    .flat();
   // console.log(selectedElements);
 
-  selectedElements.forEach((element) => {
+  selectedElements.forEach(element => {
+    const parentNode = element.parentNode;
     let returnContent = document.createElement(element.tagName); // Duplicate the orgional element.
-    element.className = "processing";
     const elementText = element.textContent;
 
     elementText.split(" ").forEach((text) => {
@@ -34,14 +32,9 @@ const diyOnicConverter = (textContentContainerSelector) => {
       textNode.append(text.slice(prefixLength, text.length) + " "); //Append the rest of the text
 
       returnContent.appendChild(textNode);
-      container.appendChild(returnContent);
     });
+    parentNode.replaceChild(returnContent, element);
   });
-
-  // Remove the orgional content
-  container
-    .querySelectorAll(".processing")
-    .forEach((element) => container.removeChild(element));
 };
 
 // Allow global access so that this can be executed from the console.
