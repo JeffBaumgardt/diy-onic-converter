@@ -13,7 +13,7 @@ const diyOnicConverter = (textContentContainerSelector) => {
     .flat();
   // console.log(selectedElements);
 
-  selectedElements.forEach(element => {
+  selectedElements.forEach((element) => {
     const parentNode = element.parentNode;
     let returnContent = document.createElement(element.tagName); // Duplicate the orgional element.
     const elementText = element.textContent;
@@ -24,6 +24,7 @@ const diyOnicConverter = (textContentContainerSelector) => {
       // But for grins we'll add some css selectors and style it as well.
       const textNode = document.createElement("text");
       const newText = document.createElement("b");
+      newText.style = "font-weight: bold;";
 
       // Grab the prefix length of the text to create the new bold node
       newText.textContent = text.slice(0, prefixLength);
