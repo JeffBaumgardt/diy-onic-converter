@@ -16,21 +16,32 @@ const diyOnicConverter = (textContentContainerSelector) => {
   // console.log(selectedElements);
 
   selectedElements.forEach((element) => {
-    let returnContent = document.createElement(element.tagName);
+    let returnContent = document.createElement(element.tagName); // Duplicate the orgional element.
+    element.className = "processing";
     const elementText = element.textContent;
 
     elementText.split(" ").forEach((text) => {
+      // Create two nodes, the outer for containing the entire text and the inner for bolding. HTML 5 lets us
+      // us create any element we want so `text` will work just fine and the `b` will be bold per html spec.
+      // But for grins we'll add some css selectors and style it as well.
       const textNode = document.createElement("text");
       const newText = document.createElement("b");
 
+      // Grab the prefix length of the text to create the new bold node
       newText.textContent = text.slice(0, prefixLength);
+
       textNode.appendChild(newText);
-      textNode.append(text.slice(prefixLength, text.length) + " ");
+      textNode.append(text.slice(prefixLength, text.length) + " "); //Append the rest of the text
 
       returnContent.appendChild(textNode);
       container.appendChild(returnContent);
     });
   });
+
+  // Remove the orgional content
+  container
+    .querySelectorAll(".processing")
+    .forEach((element) => container.removeChild(element));
 };
 
 // Allow global access so that this can be executed from the console.
