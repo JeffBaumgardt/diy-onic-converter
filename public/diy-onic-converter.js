@@ -2,11 +2,7 @@
  * Implement your converter function here.
  */
 const diyOnicConverter = (textContentContainerSelector, options = {}) => {
-  const {
-    selectorList = ["p"],
-    prefixLength = 3,
-    formatType = "bold",
-  } = options;
+  const { selectorList = ["p"], prefixLength = 3 } = options;
   const container = document.querySelector(textContentContainerSelector);
   console.log("Performing bionic reading conversion on:", container);
 
@@ -53,19 +49,7 @@ const diyOnicConverter = (textContentContainerSelector, options = {}) => {
       // us create any element we want so `text` will work just fine and the `innerText` will be bold per formayType style.
       const textNode = document.createElement("text");
       const newText = document.createElement("innerText");
-      switch (formatType) {
-        case "bold":
-          newText.className = "bionic-bold";
-          break;
-        case "italic":
-          newText.className = "bionic-italic";
-          break;
-        case "underline":
-          newText.className = "bionic-underline";
-          break;
-      }
-
-      // Grab the prefix length of the text to create the new bold node
+      newText.className = "bionic-bold";
       newText.textContent = text.slice(0, prefixLength);
 
       textNode.appendChild(newText);
